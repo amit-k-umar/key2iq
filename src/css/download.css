@@ -1,0 +1,42 @@
+.tabel-parent{
+  
+    width: 80%;
+    
+    display: flex;
+    flex-direction: column;
+ 
+     margin: 10px auto;
+	border:1px solid #eeeeee;
+
+}
+.tabel-row{
+    display: flex;
+    width:100%;
+    padding:10px 0;
+
+}
+.tabel-row:nth-of-type(odd) {
+    background:#eeeeee;
+}
+.tabel-key{
+    font-weight: bold;
+    flex: 2;
+    text-transform:uppercase;
+    color: #82827E;
+    padding-left: 1em;
+}
+.tabel-val{
+    flex: 6;
+    padding: 0 1em;
+}
+h1{
+    margin:0 auto;
+    text-align: center;
+    color: #8799C2;}
+
+    .d-btn{
+        background-color: #CFE6CF;
+        font-size: 1.5em;
+        border: none;
+        padding: 5px;
+    }
