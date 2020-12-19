@@ -1,7 +1,4 @@
 import React,{useEffect,useState} from 'react'
-import {
-    JsonToExcel
-  } from 'react-json-excel';
 import XLSX from 'xlsx'
 import '../css/download.css'
 

@@ -33,7 +33,7 @@ export default function Home(props) {
      }
 
      function handelAddHobbey(e){
-        if (e.key === '+') {
+        if (e.key === ',') {
             // code for enter
             console.log(e.target.value);
             var val=e.target.value;
@@ -53,7 +53,7 @@ export default function Home(props) {
           }
      }
      function handelAddSkill(e){
-        if (e.key === '+') {
+        if (e.key === ',') {
             // code for enter
             console.log(e.target.value);
             var val=e.target.value;
@@ -69,6 +69,7 @@ export default function Home(props) {
                 })
             }
             e.target.value='';
+            
             
           }
      }
@@ -87,7 +88,7 @@ export default function Home(props) {
        // const navigate = useNavigate();
         console.log('Event: Form Submit');
         props.history.push('/download', { state,skills,hobbey });
-};
+    };
     return (
         <div className="form-box card">
             
@@ -121,7 +122,7 @@ export default function Home(props) {
                onDelete={(e)=>handleDeleteSkillChip(e,skill)}
               />
              )}
-                 <input type="text" id="skills" name="skill" onKeyPress={handelAddSkill}  placeholder="Pess '+' to add Skills" />
+             <input type="text" id="skills" name="skill" onKeyPress={handelAddSkill}  placeholder="Pess ' , ' to add Skills" />
           
            </div>
            <div className="skills-chip-box">
@@ -135,7 +136,7 @@ export default function Home(props) {
               />
              )}
                 
-             <input type="text" id="hobbies" onKeyPress={handelAddHobbey}  placeholder="Pess '+' to add hobbies" />
+             <input type="text" id="hobbies" onKeyPress={handelAddHobbey}  placeholder="Pess ' , ' to add hobbies" />
              
            </div>
            
