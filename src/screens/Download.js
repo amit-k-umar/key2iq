@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React,{useEffect} from 'react'
 import XLSX from 'xlsx'
 import '../css/download.css'
 
@@ -8,11 +8,11 @@ export default function Download(props) {
 
     
     const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-    const EXCEL_EXTENSION = '.xlsx';
+    
 
     function  downloadhandeler(e)
     
-    {  var data=[state,{"hobbey":hstr},{"skill":sstr}];
+    {  var data=[state];
           const worksheet=XLSX.utils.json_to_sheet(data);
           const workbook={
               Sheets:{
@@ -23,7 +23,7 @@ export default function Download(props) {
           const exelBuffer=XLSX.write(workbook,{bookType:"xlsx",type:'array'});
           console.log(exelBuffer);
 
-   
+            var filename='firstone'
             var blob = new Blob([exelBuffer], {type: EXCEL_TYPE});
             if(window.navigator.msSaveOrOpenBlob) {
                 window.navigator.msSaveBlob(blob, filename);
@@ -31,33 +31,20 @@ export default function Download(props) {
             else{
                 var elem = window.document.createElement('a');
                 elem.href = window.URL.createObjectURL(blob);
-                elem.download = "jj";        
+                elem.download = state.firstname;        
                 document.body.appendChild(elem);
                 elem.click();        
                 document.body.removeChild(elem);
             
         }
     }
-     const {state, hobbey, skills}=props.location.state;
-     const [hstr, setHstr] = useState('');
-     const [sstr, setSstr] = useState('');
+     const {state}=props.location.state;
     useEffect(() => {
         if(!state)
         props.history.push('/');
-        var str1='';
-        var str2='';
-        skills.forEach(element => {
-            str1+= element+", ";
-        });
-        hobbey.forEach(ele=>{
-            str2+=ele+", ";
-        })
-        setHstr(str1);
-        setSstr(str2);
+       
 
-        console.log(state);
-
-    }, []) 
+    }) 
 
     return (
 
@@ -151,7 +138,7 @@ export default function Download(props) {
 
 
                 <p className="tabel-val">
-                {hstr}
+                {state.hobbey}
                 </p>
             </div>
             <div className="tabel-row">
@@ -161,7 +148,7 @@ export default function Download(props) {
 
 
                 <p className="tabel-val">
-                {sstr}
+                {state.skills}
                 </p>
             </div>
              <button className="d-btn"  onClick={downloadhandeler}> Download</button>
